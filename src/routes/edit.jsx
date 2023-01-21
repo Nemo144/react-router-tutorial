@@ -3,7 +3,7 @@ import { updateContact } from "../contact";
 
 export async function action({ request, params }) {
   const formData = await request.formData();
-  const updates = Object.fromEntries(formData);
+  const updates = Object.fromEntries(formData); // we use Object.fromEntries to collect them all into an object, which is exactly what our updateContact function wants.
   await updateContact(params.contactId, updates);
   return redirect(`/contacts/${params.contactId}`);
 }
